@@ -1,0 +1,29 @@
+# ==========================================
+# Elasticsearch Configuration File
+# ==========================================
+
+# Cluster settings
+cluster.name: "siem-cluster"
+node.name: "node-1"
+
+# Network settings
+network.host: 0.0.0.0
+http.port: 9200
+
+# Disable security for simplicity (enable in production)
+xpack.security.enabled: false
+
+# Memory settings
+bootstrap.memory_lock: false
+
+# Index settings
+indices.memory.index_buffer_size: 30%
+
+# Logging
+logger.level: info
+
+# Discovery settings (single node cluster)
+discovery.type: single-node
+
+# Action logging (verbose logging for debugging)
+logger.org.elasticsearch.action: debug

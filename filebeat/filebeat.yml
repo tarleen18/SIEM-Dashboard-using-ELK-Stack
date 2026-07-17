@@ -1,0 +1,62 @@
+# ==========================================
+# Filebeat Configuration File
+# ==========================================
+
+# ==================== Filebeat inputs ====================
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/auth.log          # Authentication logs (Debian/Ubuntu)
+    - /var/log/syslog            # System logs
+    - /var/log/kern.log          # Kernel logs
+    - /var/log/secure            # RHEL/CentOS auth logs
+    - /var/log/audit/audit.log   # Audit logs (if available)
+
+  # Multiline settings for syslog
+  multiline.pattern: '^\['
+  multiline.negate: true
+  multiline.match: after
+
+  # Fields to add to events
+  fields:
+    environment: production
+    service: syslog
+
+# ==================== Filebeat Modules ====================
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: true
+  reload.period: 10s
+
+# ==================== Logstash Output ====================
+output.logstash:
+  # Address of Logstash server
+  hosts: ["localhost:5044"]      # Change localhost to Logstash IP if remote
+  
+  # Load balancing
+  loadbalance: true
+  worker: 2
+
+# Alternative: Direct Elasticsearch output (comment above logstash section)
+# output.elasticsearch:
+#   hosts: ["localhost:9200"]
+#   index: "filebeat-%{[agent.version]}-%{+yyyy.MM.dd}"
+#   username: "elastic"
+#   password: "changeme"
+
+# ==================== Logging ====================
+logging.level: info
+logging.to_files: true
+logging.files:
+  path: /var/log/filebeat
+  name: filebeat
+  keepfiles: 7
+  permissions: 0644
+
+# ==================== Processors ====================
+processors:
+  - add_host_metadata:
+      when.not.regexp.syscall: "^(syslog|internal)"
+  - add_docker_metadata: ~
+  - add_kubernetes_metadata: ~

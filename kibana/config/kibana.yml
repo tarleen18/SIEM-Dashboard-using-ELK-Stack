@@ -1,0 +1,29 @@
+# ==========================================
+# Kibana Configuration File
+# ==========================================
+
+# Server settings
+server.name: "kibana-server"
+server.host: "0.0.0.0"
+server.port: 5601
+
+# Elasticsearch connection
+elasticsearch.hosts: ["http://elasticsearch:9200"]
+elasticsearch.username: "elastic"
+elasticsearch.password: "changeme"
+
+# Request timeout (in milliseconds)
+elasticsearch.requestTimeout: 30000
+
+# Logging
+logging.level: info
+
+# Index pattern
+kibana.defaultAppId: "discover"
+
+# Allow embedding
+server.basePath: ""
+server.rewriteBasePath: false
+
+# Security (disabled for development)
+xpack.security.enabled: false

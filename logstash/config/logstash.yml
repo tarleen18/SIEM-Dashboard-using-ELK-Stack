@@ -1,0 +1,19 @@
+# ==========================================
+# Logstash Configuration File
+# ==========================================
+
+# Node settings
+node.name: "logstash-node"
+pipeline.id: "main"
+
+# HTTP API
+http.host: "0.0.0.0"
+http.port: 9600
+
+# Pipeline settings
+pipeline.workers: 2
+pipeline.batch.size: 125
+
+# Logging
+log.level: info
+log.format: json

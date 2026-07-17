@@ -1,0 +1,16 @@
+# Docker volumes and runtime artifacts
+elasticsearch/data/
+logstash/pipeline/*.bak
+*.log
+*.pid
+*.tmp
+
+# Node.js	node_modules/
+package-lock.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Screenshots assets are intentionally tracked for docs
+# artifacts/screenshots/
