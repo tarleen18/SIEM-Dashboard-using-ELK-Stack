@@ -1,0 +1,24 @@
+﻿{
+    "type":  "index-pattern",
+    "id":  "67702820-81c5-11f1-9da3-bdd5883422cf",
+    "namespaces":  [
+                       "default"
+                   ],
+    "attributes":  {
+                       "timeFieldName":  "@timestamp",
+                       "title":  "logs-*"
+                   },
+    "references":  [
+
+                   ],
+    "managed":  false,
+    "migrationVersion":  {
+                             "index-pattern":  "8.0.0"
+                         },
+    "coreMigrationVersion":  "8.8.0",
+    "typeMigrationVersion":  "8.0.0",
+    "updated_at":  "2026-07-17T09:53:46.914Z",
+    "created_at":  "2026-07-17T09:53:46.914Z",
+    "version":  "WzUsMV0="
+}
+
